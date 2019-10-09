@@ -1,0 +1,73 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_usermanagement"  basedir="." default="test">
+
+  <target name="test" depends="test-compile" description="Compile module usermanagement">
+      <junit printsummary="on" haltonfailure="yes" fork="true">
+          <classpath>
+              <path refid="classpath.test"/>
+              <pathelement location="${test.build.dir}"/>
+          </classpath>
+      <formatter type="plain" />
+    <test name="ua.nure.kn.kostenko.domain.UserTest"/>
+  </junit>
+  </target>
+
+  <target name="test-compile" depends="compile">
+    <javac srcdir="${test-java-dir}" destdir="${build-dir}"/>
+  </target>
+
+  <target name="init" depends="clean">
+    <mkdir dir="${build-dir}"/>
+    <mkdir dir="${classes-dir}"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build-dir}" failonerror="no"/>
+  </target>
+
+  <dirname property="module.usermanagement.basedir" file="${ant.file.module_usermanagement}"/>
+
+  <property name="build-dir" value="${basedir}/target"/>
+  <property name="test-java-dir" value="${basedir}/src/test/java"/>
+  <property name="main-java-dir" value="${basedir}/src/main/java"/>
+  <property name="classes-dir" value="${basedir}/classes"/>
+
+  &lt;!&ndash; ==================================================
+        target: main compile
+        ================================================= &ndash;&gt;
+
+  <target name="compile" depends="init">
+    <javac srcdir="${main-java-dir}" destdir="${build-dir}"/>
+  </target>
+</project>-->
+
+<project name="usermanagement" basedir="." default="test">
+    <property name="main-java-dir" value="${basedir}/src/main/java"/>
+    <property name="build-dir" value="${basedir}/classes"/>
+    <property name="test-java-dir" value="${basedir}/src/test/java"/>
+
+    <target name="clean">
+        <delete dir="${build-dir}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${build-dir}"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac srcdir="${main-java-dir}" destdir="${build-dir}"/>
+    </target>
+
+    <target name="test-compile">
+        <javac srcdir="${test-java-dir}" destdir="${build-dir}"/>
+    </target>
+    <target name="test" depends="test-compile">
+        <junit>
+            <classpath path="C:\Users\User\.m2\repository\junit\junit\3.8\junit-3.8.jar;${build-dir}">
+            </classpath>
+            <formatter type="plain"/>
+            <test name="test.java.ua.nure.kn.kostenko.domain.UserTest"></test>
+
+        </junit>
+    </target>
+</project>
