@@ -1,6 +1,7 @@
 
 package test.java.ua.nure.kn.kostenko.db;
 
+import java.util.Collection;
 import java.util.Date;
 
 import main.java.ua.nure.kn.kostenko.db.ConnectionFactory;
@@ -66,6 +67,9 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	}
 
 	public void testFindAll() throws DatabaseException {
+		Collection<User> users= dao.findAll();
+		assertNotNull(users);
+		assertEquals("Collection size does not match",2, users.size());
 
 	}
 	protected void tearDown() throws Exception {
