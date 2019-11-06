@@ -14,9 +14,13 @@ import main.java.ua.nure.kn.kostenko.domain.User;
 
 public  class HsqlUserDao implements Dao<User> {
 
-    private static final String INSERT_QUERY = "INSERT INTO users (firstname,lastname,dateofbirth) VALUES (?,?,?)";;
-    private static final String CALL_IDENTITY =  "call IDENTITY()";;
+
+
+    private static final String CALL_IDENTITY = "call IDENTITY()";
+    private static final String INSERT_QUERY = "INSERT INTO users (firstname,lastname,dateofbirth) VALUES (?,?,?)";
+
     ConnectionFactory connectionFactory;
+
     public ConnectionFactory getConnectionFactory() {
         return connectionFactory;
     }
@@ -29,6 +33,7 @@ public  class HsqlUserDao implements Dao<User> {
         this.connectionFactory=connectionFactory;
     }
 
+    @Override
     public User create(User entity) throws DatabaseException {
         Connection connection = connectionFactory.createConnection();
         try {
@@ -54,6 +59,7 @@ public  class HsqlUserDao implements Dao<User> {
             throw new DatabaseException(e);
         }
     }
+
 
 
     @Override
