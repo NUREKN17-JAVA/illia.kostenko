@@ -18,6 +18,7 @@ public  class HsqlUserDao implements Dao<User> {
 
     private static final String CALL_IDENTITY = "call IDENTITY()";
     private static final String INSERT_QUERY = "INSERT INTO users (firstname,lastname,dateofbirth) VALUES (?,?,?)";
+    private static final String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users";
 
     ConnectionFactory connectionFactory;
 
@@ -79,7 +80,26 @@ public  class HsqlUserDao implements Dao<User> {
 
     @Override
     public Collection<User> findAll() throws DatabaseException {
-        return null;
+        Collection <User> result = new LinkedList<User>();
+        Connection connection = connectionFactory.createConnection();
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet =
+                    statement.executeQuery(SELECT_ALL_QUERY);
+            while(resultSet.next()) {
+                User user  = new User();
+                user.setId(resultSet.getLong(1));
+                user.setFirstName(resultSet.getString(2));
+                user.setLastName(resultSet.getString(3));
+                user.setDateOfBirth(resultSet.getDate(4));
+                result.add(user);
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
+
+        return result;
     }
 
 

@@ -69,7 +69,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	public void testFindAll() throws DatabaseException {
 		Collection<User> users= dao.findAll();
 		assertNotNull(users);
-		assertEquals("Collection size does not match",2, users.size());
+		assertEquals("Collection size   matches ",3, users.size());
 
 	}
 	protected void tearDown() throws Exception {
