@@ -15,6 +15,12 @@
 			<value>Kiwi</value> 
 			<value>Bird</value> 
 			<value>1949-08-17</value> 
-		</row> 
+		</row>
+		<row>
+			<value>1002</value>
+			<value>Booker</value>
+			<value>DeWitt</value>
+			<value>1874-04-13</value>
+		</row>
 	</table> 
 </dataset> 
