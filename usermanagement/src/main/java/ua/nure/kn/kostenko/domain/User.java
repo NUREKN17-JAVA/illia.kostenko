@@ -44,6 +44,11 @@ public class User implements Serializable {
 
     private Date dateOfBirth;
 
+    public User() {
+        firstName = "";
+        lastName = "";
+    }
+
     public String getFullName() {
         return getFirstName() + " " + getLastName();
     }
