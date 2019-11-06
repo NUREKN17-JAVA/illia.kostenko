@@ -12,9 +12,10 @@ import java.util.LinkedList;
 
 import main.java.ua.nure.kn.kostenko.domain.User;
 
-public  class HsqlUserDao implements Dao<User> {
+public class HsqlUserDao implements Dao<User> {
 
-
+    public HsqlUserDao() {
+    }
 
     private static final String CALL_IDENTITY = "call IDENTITY()";
     private static final String INSERT_QUERY = "INSERT INTO users (firstname,lastname,dateofbirth) VALUES (?,?,?)";
@@ -33,6 +34,7 @@ public  class HsqlUserDao implements Dao<User> {
     public HsqlUserDao(ConnectionFactory connectionFactory) {
         this.connectionFactory=connectionFactory;
     }
+
 
     @Override
     public User create(User entity) throws DatabaseException {

@@ -7,7 +7,7 @@ import java.util.Date;
 import main.java.ua.nure.kn.kostenko.db.ConnectionFactory;
 import main.java.ua.nure.kn.kostenko.db.ConnectionFactoryImpl;
 import main.java.ua.nure.kn.kostenko.db.DatabaseException;
-import main.java.ua.nure.kn.kostenko.db.HsqlUserDao;
+import main.java.ua.nure.kn.kostenko.db.*;
 import main.java.ua.nure.kn.kostenko.domain.User;
 import org.dbunit.DatabaseTestCase;
 import org.dbunit.database.DatabaseConnection;
@@ -17,7 +17,7 @@ import org.dbunit.dataset.xml.XmlDataSet;
 
 
 
-public class HsqldbUserDaoTest extends DatabaseTestCase {
+ class HsqldbUserDaoTest extends DatabaseTestCase {
 
 	private static final Date DATE_OF_BIRTH_UPDATE2 = new Date(1999-11-15);
 	private static final Date DATE_OF_BIRTH_UPDATE = new Date(2000-04-11);
