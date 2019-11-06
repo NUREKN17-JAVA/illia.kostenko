@@ -13,6 +13,20 @@ import java.util.LinkedList;
 import main.java.ua.nure.kn.kostenko.domain.User;
 
 public  class HsqlUserDao implements Dao<User> {
+
+    ConnectionFactory connectionFactory;
+    public ConnectionFactory getConnectionFactory() {
+        return connectionFactory;
+    }
+
+    public void setConnectionFactory(ConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
+
+    public HsqlUserDao(ConnectionFactory connectionFactory) {
+        this.connectionFactory=connectionFactory;
+    }
+
     @Override
     public User create(User entity) throws DatabaseException {
         return null;
