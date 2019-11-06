@@ -10,7 +10,7 @@ public class DaoFactoryTest extends TestCase {
 		try {
 			DaoFactory daoFactory = DaoFactory.getInstance();
 			assertNotNull("DaoFactory is null",daoFactory);
-			Dao userDao = daoFactory.getUserDao();
+			Dao userDao = daoFactory.getDao();
 			assertNotNull("UserDao is null",userDao);
 		} catch (Exception e) {
 			e.printStackTrace();

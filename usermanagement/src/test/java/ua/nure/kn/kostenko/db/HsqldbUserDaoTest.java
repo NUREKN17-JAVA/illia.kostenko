@@ -17,7 +17,7 @@ import org.dbunit.dataset.xml.XmlDataSet;
 
 
 
- class HsqldbUserDaoTest extends DatabaseTestCase {
+ public class HsqldbUserDaoTest extends DatabaseTestCase {
 
 	private static final Date DATE_OF_BIRTH_UPDATE2 = new Date(1999-11-15);
 	private static final Date DATE_OF_BIRTH_UPDATE = new Date(2000-04-11);
@@ -56,13 +56,40 @@ import org.dbunit.dataset.xml.XmlDataSet;
         assertEquals(user.getDateOfBirth(),userToChek.getDateOfBirth());
     }
 	public void testUpdate() throws DatabaseException{
+		User user = new User();
+		user.setFirstName(FIRST_NAME_UPDATE);
+		user.setLastName(LAST_NAME_UPDATE);
+		user.setDateOfBirth(DATE_OF_BIRTH_UPDATE);
+		User userToChek = dao.create(user);
+		assertEquals(FIRST_NAME_UPDATE,userToChek.getFirstName());
+		assertEquals(LAST_NAME_UPDATE,userToChek.getLastName());
+		assertEquals(DATE_OF_BIRTH_UPDATE,userToChek.getDateOfBirth());
+		userToChek.setFirstName(FIRST_NAME_UPDATE2);
+		userToChek.setLastName(LAST_NAME_UPDATE2);
+		userToChek.setDateOfBirth(DATE_OF_BIRTH_UPDATE2);
+		dao.update(userToChek);
+		assertEquals(FIRST_NAME_UPDATE2,userToChek.getFirstName());
+		assertEquals(LAST_NAME_UPDATE2,userToChek.getLastName());
+		assertEquals(DATE_OF_BIRTH_UPDATE2,userToChek.getDateOfBirth());
 
 	}
 	public void testDelete() throws DatabaseException{
-
+		User user = new User();
+		user.setFirstName(FIRST_NAME_UPDATE);
+		user.setLastName(LAST_NAME_UPDATE);
+		user.setDateOfBirth(DATE_OF_BIRTH_UPDATE);
+		User userToChek = dao.create(user);
+		assertNotNull(userToChek.getId());
+		dao.delete(userToChek);
+		User user2 = dao.find(userToChek.getId());
+		assertNotNull(user2);
+		assertNotNull(user2.getId());
 	}
 
 	public void testFind() throws DatabaseException{
+		User userToChek = dao.find(ID);
+		assertEquals("Wrong data",LAST_NAME_UPDATE2,userToChek.getLastName());
+		assertEquals("Wrong data",FIRST_NAME_UPDATE2,userToChek.getFirstName());
 
 	}
 

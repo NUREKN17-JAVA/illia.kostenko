@@ -34,7 +34,7 @@ public class DaoFactory {
 		return INSTANCE;
 	}
 
-	public Dao getUserDao() {
+	public Dao getDao() {
 		try {
 			Class daoClass = Class.forName(properties.getProperty(USER_DAO));
 			Dao userDao = (Dao) daoClass.newInstance();
