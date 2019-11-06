@@ -12,37 +12,34 @@ import java.util.LinkedList;
 
 import main.java.ua.nure.kn.kostenko.domain.User;
 
-
-
-public class HsqlUserDao implements Dao {
+public  class HsqlUserDao implements Dao<User> {
+    @Override
+    public User create(User entity) throws DatabaseException {
+        return null;
+    }
 
 
 
     @Override
-    public Object create(Object entity) throws DatabaseException {
+    public void update(User entity) throws DatabaseException {
+
+    }
+
+    @Override
+    public void delete(User entity) throws DatabaseException {
+
+    }
+
+    @Override
+    public User find(Long id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public void update(Object entity) throws DatabaseException {
-
-    }
-
-    @Override
-    public void delete(Object entity) throws DatabaseException {
-
-    }
-
-    @Override
-    public Object find(Long id) throws DatabaseException {
+    public Collection<User> findAll() throws DatabaseException {
         return null;
     }
 
-    @Override
-    public Collection findAll() throws DatabaseException {
-        return null;
-    }
 
 
 }
-
