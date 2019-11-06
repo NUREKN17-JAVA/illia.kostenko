@@ -20,6 +20,9 @@ public class HsqlUserDao implements Dao<User> {
     private static final String CALL_IDENTITY = "call IDENTITY()";
     private static final String INSERT_QUERY = "INSERT INTO users (firstname,lastname,dateofbirth) VALUES (?,?,?)";
     private static final String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users";
+    private static final String UPDATE_QUERY = "UPDATE users SET firstname = ?, lastname = ?, dateofbirth = ? WHERE id = ?";
+    private static final String DELETE_QUERY = "DELETE FROM users WHERE id = ?";
+    private static final String SELECT_QUERY = "SELECT * FROM users WHERE id = ?";
 
     ConnectionFactory connectionFactory;
 
@@ -67,17 +70,55 @@ public class HsqlUserDao implements Dao<User> {
 
     @Override
     public void update(User entity) throws DatabaseException {
+        Connection connection = connectionFactory.createConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(UPDATE_QUERY);
+            preparedStatement.setString(1,entity.getFirstName());
+            preparedStatement.setString(2,entity.getLastName());
+            preparedStatement.setDate(3,new Date(entity.getDateOfBirth().getTime()));
+            preparedStatement.setLong(4, entity.getId());
 
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
     }
 
-    @Override
     public void delete(User entity) throws DatabaseException {
+        Connection connection = connectionFactory.createConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY);
+            preparedStatement.setLong(1,entity.getId());
 
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (SQLException e){
+            throw new DatabaseException(e);
+        }
     }
 
     @Override
     public User find(Long id) throws DatabaseException {
-        return null;
+        Connection connection = connectionFactory.createConnection();
+        User user = new User();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                user.setId(resultSet.getLong(1));
+                user.setFirstName(resultSet.getString(2));
+                user.setLastName(resultSet.getString(3));
+                user.setDateOfBirth(resultSet.getDate(4));
+            }
+            preparedStatement.close();
+            return user;
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
     }
 
     @Override
