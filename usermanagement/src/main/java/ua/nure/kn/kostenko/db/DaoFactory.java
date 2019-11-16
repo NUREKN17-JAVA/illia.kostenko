@@ -21,7 +21,7 @@ public class DaoFactory {
 
 
 
-	private DaoFactory() {
+	 protected DaoFactory() {
 		properties = new Properties();
 		try {
 			properties.load(getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE));

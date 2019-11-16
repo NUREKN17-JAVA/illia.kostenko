@@ -1,4 +1,4 @@
-package test.java.ua.nure.kn.kostenko.db;
+package ua.nure.kn.kostenko.db;
 
 import junit.framework.TestCase;
 import main.java.ua.nure.kn.kostenko.db.Dao;

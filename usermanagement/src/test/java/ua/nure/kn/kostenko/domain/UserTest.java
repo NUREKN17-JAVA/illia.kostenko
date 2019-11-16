@@ -1,4 +1,4 @@
-package test.java.ua.nure.kn.kostenko.domain;
+package ua.nure.kn.kostenko.domain;
 
 import junit.framework.TestCase;
 import main.java.ua.nure.kn.kostenko.domain.User;
