@@ -30,6 +30,7 @@ public class MainFrameTest extends JFCTestCase {
     private static final String OK_BUTTON_COMPONENT_NAME = "okButton";
     private static final String CANCEL_BUTTON_COMPONENT_NAME = "cancelButton";
     public static final String USER_TABLE_COMPONENT_NAME = "userTable";
+
     private MainFrame mainFrame;
 
     @Override
@@ -61,7 +62,7 @@ public class MainFrameTest extends JFCTestCase {
 
     public void testBrowseControls() {
         find(JPanel.class, BROWSE_PANEL_COMPONENT_NAME);
-        JTable table  = (JTable) find(JTable.class, "userTable");
+        JTable table  = (JTable) find(JTable.class, USER_TABLE_COMPONENT_NAME);
         assertEquals(3, table.getColumnCount());
         assertEquals("ID", table.getColumnName(0));
         assertEquals("Имя", table.getColumnName(1));
@@ -75,16 +76,29 @@ public class MainFrameTest extends JFCTestCase {
     }
 
     public void testAddUser() {
+        JTable table = (JTable) find(JTable.class, USER_TABLE_COMPONENT_NAME );
+        assertEquals(0, table.getRowCount());
         JButton addButton = (JButton) find(JButton.class, ADD_BUTTON_COMPONENT_NAME);
         getHelper().enterClickAndLeave(new MouseEventData(this, addButton));
 
         find(JPanel.class, ADD_PANEL_COMPONENT_NAME);
 
-        find(JTextField.class, FIRST_NAME_FIELD_COMPONENT_NAME);
-        find(JTextField.class, LAST_NAME_FIELD_COMPONENT_NAME);
-        find(JTextField.class, DATE_OF_BIRTH_FIELD_COMPONENT_NAME);
-        find(JButton.class, OK_BUTTON_COMPONENT_NAME);
-        find(JButton.class, CANCEL_BUTTON_COMPONENT_NAME);
+        JTextField firstNameField = (JTextField) find(JTextField.class, FIRST_NAME_FIELD_COMPONENT_NAME);
+        JTextField lastNameField = (JTextField) find(JTextField.class, LAST_NAME_FIELD_COMPONENT_NAME);
+        JTextField dateOfBirthField = (JTextField) find(JTextField.class, DATE_OF_BIRTH_FIELD_COMPONENT_NAME);
+        JButton okButton = (JButton) find(JButton.class, OK_BUTTON_COMPONENT_NAME);
+        JButton cancelButton = (JButton) find(JButton.class, CANCEL_BUTTON_COMPONENT_NAME);
+
+        DateFormat formatter = DateFormat.getDateInstance();
+        String date = formatter.format(new Date());
+        getHelper().sendString(new StringEventData(this, firstNameField, "John"));
+        getHelper().sendString(new StringEventData(this, lastNameField, "Doe"));
+        getHelper().sendString(new StringEventData(this, dateOfBirthField, date));
+        getHelper().enterClickAndLeave(new MouseEventData(this, okButton));
+
+        find(JPanel.class, BROWSE_PANEL_COMPONENT_NAME);
+        table = (JTable) find(JTable.class, USER_TABLE_COMPONENT_NAME );
+        assertEquals(1, table.getRowCount());
     }
 
     private void fillFields(String firstName, String lastName, Date dateOfBirth) {
