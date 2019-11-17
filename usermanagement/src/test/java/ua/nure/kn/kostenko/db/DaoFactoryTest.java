@@ -1,8 +1,8 @@
 package ua.nure.kn.kostenko.db;
 
 import junit.framework.TestCase;
-import main.java.ua.nure.kn.kostenko.db.Dao;
-import main.java.ua.nure.kn.kostenko.db.DaoFactory;
+import ua.nure.kn.kostenko.db.Dao;
+import ua.nure.kn.kostenko.db.DaoFactory;
 
 public class DaoFactoryTest extends TestCase {
 

@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.gui;
+package ua.nure.kn.kostenko.gui;
 
 import javax.swing.*;
 import java.awt.*;

@@ -6,8 +6,8 @@ import junit.extensions.jfcunit.TestHelper;
 import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.eventdata.StringEventData;
 import junit.extensions.jfcunit.finder.NamedComponentFinder;
-import main.java.ua.nure.kn.kostenko.gui.AddPanel;
-import main.java.ua.nure.kn.kostenko.gui.MainFrame;
+import ua.nure.kn.kostenko.gui.AddPanel;
+import ua.nure.kn.kostenko.gui.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,6 +29,7 @@ public class MainFrameTest extends JFCTestCase {
     private static final String DATE_OF_BIRTH_FIELD_COMPONENT_NAME = "dateOfBirthField";
     private static final String OK_BUTTON_COMPONENT_NAME = "okButton";
     private static final String CANCEL_BUTTON_COMPONENT_NAME = "cancelButton";
+    public static final String USER_TABLE_COMPONENT_NAME = "userTable";
     private MainFrame mainFrame;
 
     @Override
@@ -60,6 +61,12 @@ public class MainFrameTest extends JFCTestCase {
 
     public void testBrowseControls() {
         find(JPanel.class, BROWSE_PANEL_COMPONENT_NAME);
+        JTable table  = (JTable) find(JTable.class, "userTable");
+        assertEquals(3, table.getColumnCount());
+        assertEquals("ID", table.getColumnName(0));
+        assertEquals("Имя", table.getColumnName(1));
+        assertEquals("Фамилия", table.getColumnName(2));
+
         //find user table
         find(JButton.class, ADD_BUTTON_COMPONENT_NAME);
         find(JButton.class, EDIT_BUTTON_COMPONENT_NAME);

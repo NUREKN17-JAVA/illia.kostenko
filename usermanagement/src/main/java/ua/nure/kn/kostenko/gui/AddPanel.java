@@ -1,10 +1,14 @@
-package main.java.ua.nure.kn.kostenko.gui;
+package ua.nure.kn.kostenko.gui;
+
+import ua.nure.kn.kostenko.util.Messages;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class AddPanel extends JPanel implements ActionListener {
     public static final String BROWSE_PANEL_COMPONENT_NAME = "browsePanel";
@@ -76,9 +80,17 @@ public class AddPanel extends JPanel implements ActionListener {
     }
 
     private JPanel getFieldPanel() {
-        if(fieldPanel == null) {
+        String language = "ru";
+        String country = "RU";
+
+
+         Locale locale = new Locale(language, country);
+
+
+        if (fieldPanel == null) {
             fieldPanel = new JPanel();
             fieldPanel.setLayout(new GridLayout(3,2));
+            //     addLabeledField(fieldPanel,  Messages.getString("AddPanel.first_name"), getFirstNameField());
             addLabeledField(fieldPanel, "Имя", getFirstNameField());
             addLabeledField(fieldPanel, "Фамилия", getLastNameField());
             addLabeledField(fieldPanel, "Дата рождения", getDayOfBirthField());
@@ -114,8 +126,8 @@ public class AddPanel extends JPanel implements ActionListener {
         return firstNameField;
     }
 
-    private void addLabeledField(JPanel panel, String labelText,  JTextField textfield){
-        JLabel label= new JLabel(labelText);
+    private void addLabeledField(JPanel panel, String labelText, JTextField textfield) {
+        JLabel label = new JLabel(labelText);
         label.setLabelFor(textfield);
         panel.add(label);
         panel.add(textfield);

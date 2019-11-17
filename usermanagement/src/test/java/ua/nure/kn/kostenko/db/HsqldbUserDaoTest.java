@@ -4,11 +4,11 @@ package ua.nure.kn.kostenko.db;
 import java.util.Collection;
 import java.util.Date;
 
-import main.java.ua.nure.kn.kostenko.db.ConnectionFactory;
-import main.java.ua.nure.kn.kostenko.db.ConnectionFactoryImpl;
-import main.java.ua.nure.kn.kostenko.db.DatabaseException;
-import main.java.ua.nure.kn.kostenko.db.*;
-import main.java.ua.nure.kn.kostenko.domain.User;
+import ua.nure.kn.kostenko.db.ConnectionFactory;
+import ua.nure.kn.kostenko.db.ConnectionFactoryImpl;
+import ua.nure.kn.kostenko.db.DatabaseException;
+import ua.nure.kn.kostenko.db.*;
+import ua.nure.kn.kostenko.domain.User;
 import org.dbunit.DatabaseTestCase;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;

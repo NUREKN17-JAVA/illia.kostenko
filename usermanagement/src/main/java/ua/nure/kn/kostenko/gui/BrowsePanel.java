@@ -1,12 +1,12 @@
-package main.java.ua.nure.kn.kostenko.gui;
+package ua.nure.kn.kostenko.gui;
 
-import main.java.ua.nure.kn.kostenko.gui.MainFrame;
+import ua.nure.kn.kostenko.gui.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 
 
 public class BrowsePanel extends JPanel implements ActionListener {
@@ -54,7 +54,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
     private JTable getUserTable() {
         if (userTable == null) {
             userTable = new JTable();
-            userTable.setName(USER_TABLE_COMPONENT_NAME);
+            userTable.setName("userTable");
+            UserTableModel model = new UserTableModel(new ArrayList());
+            userTable.setModel(model);
         }
         return userTable;
     }

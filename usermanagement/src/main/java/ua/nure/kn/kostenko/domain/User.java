@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.domain;
+package ua.nure.kn.kostenko.domain;
 
 import java.io.Serializable;
 import java.util.Calendar;

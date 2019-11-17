@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.db;
+package ua.nure.kn.kostenko.db;
 
 import java.util.Collection;
 

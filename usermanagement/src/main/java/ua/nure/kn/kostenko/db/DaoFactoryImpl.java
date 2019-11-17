@@ -1,6 +1,6 @@
-package main.java.ua.nure.kn.kostenko.db;
+package ua.nure.kn.kostenko.db;
 
-import main.java.ua.nure.kn.kostenko.domain.User;
+import ua.nure.kn.kostenko.domain.User;
 
 public class DaoFactoryImpl extends DaoFactory{
 
