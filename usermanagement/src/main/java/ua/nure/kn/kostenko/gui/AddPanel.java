@@ -44,7 +44,7 @@ public class AddPanel extends JPanel implements ActionListener {
     private void initialize() {
         this.setName(ADD_PANEL_COMPONENT_NAME);
         this.setLayout(new BorderLayout());
-        this.add(getFieldPanel(), BorderLayout.CENTER);
+        this.add(getFieldPanel(), BorderLayout.NORTH);
         this.add(getButtonPanel(), BorderLayout.SOUTH);
     }
 
@@ -80,11 +80,7 @@ public class AddPanel extends JPanel implements ActionListener {
     }
 
     private JPanel getFieldPanel() {
-        String language = "ru";
-        String country = "RU";
 
-
-         Locale locale = new Locale(language, country);
 
 
         if (fieldPanel == null) {
@@ -121,7 +117,6 @@ public class AddPanel extends JPanel implements ActionListener {
         if (firstNameField == null) {
             firstNameField = new JTextField();
             firstNameField.setName(FIRST_NAME_FIELD_COMPONENT_NAME);
-            addLabeledField(fieldPanel, "Имя", getFirstNameField());
         }
         return firstNameField;
     }
@@ -137,6 +132,8 @@ public class AddPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //parse
         //dao create
+        this.setVisible(false);
+        parent.showBrowsePanel();
 
     }
 }
