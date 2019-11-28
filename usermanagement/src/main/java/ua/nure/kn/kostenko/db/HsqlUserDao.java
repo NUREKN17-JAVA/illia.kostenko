@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.db;
+package ua.nure.kn.kostenko.db;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import main.java.ua.nure.kn.kostenko.domain.User;
+import ua.nure.kn.kostenko.domain.User;
 
 public class HsqlUserDao implements Dao<User> {
 
