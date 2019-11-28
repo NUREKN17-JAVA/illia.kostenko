@@ -1,11 +1,15 @@
 package ua.nure.kn.kostenko.gui;
 
-import ua.nure.kn.kostenko.util.Messages;
+import ua.nure.kn.kostenko.db.DatabaseException;
+import ua.nure.kn.kostenko.domain.User;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -132,8 +136,38 @@ public class AddPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //parse
         //dao create
+        if("ok".equalsIgnoreCase(e.getActionCommand())){
+            User user = new User();
+            user.setFirstName(getFirstNameField().getText());
+            user.setLastName(getLastNameField().getText());
+            DateFormat format =DateFormat.getDateInstance();
+            try {
+                user.setDateOfBirth(format.parse(getDayOfBirthField().getText()));
+            } catch (ParseException ex) {
+                getDayOfBirthField().setBackground(Color.CYAN);
+                return;
+            }
+            try {
+                parent.getUserDao().create(user);
+            } catch (DatabaseException ex) {
+                JOptionPane.showMessageDialog(this,ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+        clearFields();
         this.setVisible(false);
         parent.showBrowsePanel();
 
+    }
+
+    private void clearFields() {
+        getFirstNameField().setText("");
+        getFirstNameField().setBackground(Color.white);
+
+        getLastNameField().setText("");
+        getLastNameField().setBackground(Color.white);
+
+        getDayOfBirthField().setText("");
+        getDayOfBirthField().setBackground(Color.white);
     }
 }

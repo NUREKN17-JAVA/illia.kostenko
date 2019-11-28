@@ -1,20 +1,29 @@
 package ua.nure.kn.kostenko.db;
 
 import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ua.nure.kn.kostenko.db.Dao;
 import ua.nure.kn.kostenko.db.DaoFactory;
 
-public class DaoFactoryTest extends TestCase {
+class DaoFactoryTest extends TestCase {
 
-	public void testGetUserDao() {
+	@BeforeEach
+	protected void setUp() throws Exception {
+		super.setUp();
+	}
+
+	@Test
+	void testGetUserDao() {
 		try {
 			DaoFactory daoFactory = DaoFactory.getInstance();
-			assertNotNull("DaoFactory is null",daoFactory);
-			Dao userDao = daoFactory.getDao();
-			assertNotNull("UserDao is null",userDao);
+			assertNotNull("DaoFactory instance is null", daoFactory);
+			Dao userDao = daoFactory.getUserDao();
+			assertNotNull("UserDao instance is null", userDao);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.toString());
 		}
 	}
+
 }

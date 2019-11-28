@@ -1,18 +1,25 @@
 package ua.nure.kn.kostenko.gui;
 
+import com.mockobjects.dynamic.Mock;
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
 import junit.extensions.jfcunit.TestHelper;
 import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.eventdata.StringEventData;
 import junit.extensions.jfcunit.finder.NamedComponentFinder;
+import ua.nure.kn.kostenko.db.DaoFactory;
+import ua.nure.kn.kostenko.db.DaoFactoryImpl;
+import ua.nure.kn.kostenko.db.MockDaoFactory;
+import ua.nure.kn.kostenko.db.MockUserDao;
 import ua.nure.kn.kostenko.gui.AddPanel;
 import ua.nure.kn.kostenko.gui.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 
 public class MainFrameTest extends JFCTestCase {
     public static final String BROWSE_PANEL_COMPONENT_NAME = "browsePanel";
@@ -32,15 +39,21 @@ public class MainFrameTest extends JFCTestCase {
     public static final String USER_TABLE_COMPONENT_NAME = "userTable";
 
     private MainFrame mainFrame;
+    private Mock mockUserDao;
 
-    @Override
-    public void setUp() throws Exception {
+    protected void setUp() throws Exception {
         super.setUp();
+
+        Properties properties = new Properties();
+        properties.setProperty("dao.Factory", MockDaoFactory.class.getName());
+        DaoFactory.init(properties);
+        mockUserDao = ((MockDaoFactory) DaoFactory.getInstance()).getMockUserDao();
+
+        mockUserDao.expectAndReturn("findAll", new ArrayList());
         setHelper(new JFCTestHelper());
         mainFrame = new MainFrame();
         mainFrame.setVisible(true);
-
-    }
+        }
 
     @Override
     public void tearDown() throws Exception {

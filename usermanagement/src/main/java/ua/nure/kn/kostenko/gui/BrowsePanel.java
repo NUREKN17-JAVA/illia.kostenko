@@ -1,5 +1,6 @@
 package ua.nure.kn.kostenko.gui;
 
+import ua.nure.kn.kostenko.db.DatabaseException;
 import ua.nure.kn.kostenko.gui.MainFrame;
 
 import javax.swing.*;
@@ -55,10 +56,21 @@ public class BrowsePanel extends JPanel implements ActionListener {
         if (userTable == null) {
             userTable = new JTable();
             userTable.setName("userTable");
-            UserTableModel model = new UserTableModel(new ArrayList());
-            userTable.setModel(model);
         }
+        initTable();
         return userTable;
+    }
+
+    public void initTable() {
+        UserTableModel model ;
+        try{
+            model = new UserTableModel(parent.getUserDao().findAll());
+        } catch (DatabaseException e) {
+            model = new UserTableModel(new ArrayList());
+            JOptionPane.showMessageDialog(this, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        getUserTable().setModel(model);
     }
 
     private JPanel getButtonsPanel() {
