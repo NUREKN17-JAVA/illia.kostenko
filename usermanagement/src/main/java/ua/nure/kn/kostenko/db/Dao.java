@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.db;
+package ua.nure.kn.kostenko.db;
 
 import java.util.Collection;
 
@@ -14,5 +14,5 @@ public interface Dao <T> {
     Collection<T> findAll() throws DatabaseException;
 
 
-    void setConnectionFactory(ConnectionFactory connectionFactory);
+    void setConnectionFactory(ConnectionFactory connectionFactory) throws DatabaseException;
 }

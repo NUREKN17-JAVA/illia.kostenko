@@ -1,7 +1,7 @@
-package test.java.ua.nure.kn.kostenko.domain;
+package ua.nure.kn.kostenko.domain;
 
 import junit.framework.TestCase;
-import main.java.ua.nure.kn.kostenko.domain.User;
+import ua.nure.kn.kostenko.domain.User;
 
 import java.util.Calendar;
 import java.util.Date;

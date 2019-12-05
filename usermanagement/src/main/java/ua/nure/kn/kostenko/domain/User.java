@@ -1,4 +1,4 @@
-package main.java.ua.nure.kn.kostenko.domain;
+package ua.nure.kn.kostenko.domain;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -9,6 +9,18 @@ public class User implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
+
+    public User(String firstName, String lastName, Date date) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.dateOfBirth=date;
+    }
+    public User(Long id, String firstName, String lastName, Date date) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = date;
+    }
 
     public Long getId() {
         return id;
