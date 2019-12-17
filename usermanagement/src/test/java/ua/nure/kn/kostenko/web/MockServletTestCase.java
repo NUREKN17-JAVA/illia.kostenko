@@ -32,6 +32,7 @@ public class MockServletTestCase extends BasicServletTestCaseAdapter {
         super.tearDown();
     }
 
+
     public Mock getMockUserDao() {
         return mockUserDao;
     }
@@ -41,9 +42,6 @@ public class MockServletTestCase extends BasicServletTestCaseAdapter {
     }
 
 
-    @Test
-    public void test() {
-        fail("Not yet implemented");
-    }
+
 
 }
