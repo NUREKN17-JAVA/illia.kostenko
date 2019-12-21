@@ -34,7 +34,7 @@ public class EditServletTest extends MockServletTestCase {
         doPost();
         String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
         assertNotNull(errorMessage);
-    }
+    }// added FirstName and Last Name cases
 
     public void testEditEmptyLastName() {
         User user = new User(new Long(1000), "John", "Doe", new Date());
