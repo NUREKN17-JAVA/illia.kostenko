@@ -1,0 +1,16 @@
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\DaoFactoryImpl.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\ConnectionFactoryImpl.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\EditPanel.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\MainFrame.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\BrowsePanel.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\UserTableModel.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\domain\User.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\util\Messages.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\DatabaseException.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\Dao.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\AddPanel.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\DaoFactory.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\web\BrowseServlet.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\gui\DetailsPanel.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\ConnectionFactory.java
+E:\illia.kostenko\usermanagement2\src\main\java\ua\nure\kn\kostenko\db\HsqlUserDao.java
