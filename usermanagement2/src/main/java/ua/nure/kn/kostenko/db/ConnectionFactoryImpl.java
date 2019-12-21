@@ -27,8 +27,12 @@ public class ConnectionFactoryImpl implements ConnectionFactory {
 		user = properties.getProperty("connection.user");
 		password = properties.getProperty("connection.password");
 	}
-	
-	@Override
+
+    public ConnectionFactoryImpl() {
+
+    }
+
+    @Override
 	public Connection createConnection() throws DatabaseException {
 		try {
 			Class.forName(driver);
