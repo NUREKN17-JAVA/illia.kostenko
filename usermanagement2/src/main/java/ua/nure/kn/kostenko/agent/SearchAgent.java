@@ -14,7 +14,7 @@ import java.util.Collection;
 
 public class SearchAgent extends Agent {
 
-    private AID[] aids = new AID[0];
+    private AID[] aids = new AID[0];//added AID
 
     private SearchGui gui = null;
 
@@ -44,7 +44,7 @@ public class SearchAgent extends Agent {
                 }
             }
         });
-        addBehaviour(new RequestServer());
+        addBehaviour(new RequestServer());//added Behaiour
         DFAgentDescription description = new DFAgentDescription();
         description.setName(getAID());
         ServiceDescription serviceDescription = new ServiceDescription();
