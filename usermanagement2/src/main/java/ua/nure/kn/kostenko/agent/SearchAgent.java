@@ -9,6 +9,10 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
+import ua.nure.kn.kostenko.agent.behaviour.SearchRequestBehaviour;
+import ua.nure.kn.kostenko.db.DaoFactory;
+import ua.nure.kn.kostenko.db.DatabaseException;
+import ua.nure.kn.kostenko.domain.User;
 
 import java.util.Collection;
 
@@ -72,20 +76,18 @@ public class SearchAgent extends Agent {
         System.out.println("Agent " + getAID().getName() + " has finished working!");
     }
 
-    public void search(String firstName, String lastName) throws SearchException {
-        try {
-            Collection<User> users = DaoFactory.getInstance().getUserDao().find(firstName, lastName);
-            if (users.size() > 0) {
-                showUsers(users);
-            } else {
-                addBehaviour(new SearchRequestBehaviour(firstName, lastName, aids));
-            }
-        } catch (DatabaseException e) {
-            throw new SearchException(e);
+    public void search(String firstName, String lastName) throws SearchException, DatabaseException {
+        Collection<User> users = DaoFactory.getInstance().getUserDao().find(firstName, lastName);
+        if (users.size() > 0) {
+            showUsers(users);
+        } else {
+            addBehaviour(new SearchRequestBehaviour(firstName, lastName, aids));
         }
     }
 
     public void showUsers(Collection<User> users) {
         gui.addUsers(users);
     }
+
+
 }
