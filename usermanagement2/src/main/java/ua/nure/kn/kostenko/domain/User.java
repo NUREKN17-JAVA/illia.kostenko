@@ -22,6 +22,9 @@ public class User implements Serializable {
         this.dateOfBirth = date;
     }
 
+    public User(Long aLong, String lastName, String nextToken) {
+    }
+
     public Long getId() {
         return id;
     }

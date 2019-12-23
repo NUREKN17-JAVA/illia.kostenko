@@ -1,5 +1,7 @@
 package ua.nure.kn.kostenko.db;
 
+import ua.nure.kn.kostenko.domain.User;
+
 import java.util.Collection;
 
 public interface Dao <T> {
@@ -12,6 +14,8 @@ public interface Dao <T> {
     T find(Long id) throws DatabaseException;
 
     Collection<T> findAll() throws DatabaseException;
+
+    Collection<User> find(String firstName, String lastName) throws DatabaseException;
 
 
     void setConnectionFactory(ConnectionFactory connectionFactory) throws DatabaseException;

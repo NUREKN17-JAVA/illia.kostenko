@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -23,6 +24,7 @@ public class HsqlUserDao implements Dao<User> {
     private static final String UPDATE_QUERY = "UPDATE users SET firstname = ?, lastname = ?, dateofbirth = ? WHERE id = ?";
     private static final String DELETE_QUERY = "DELETE FROM users WHERE id = ?";
     private static final String SELECT_QUERY = "SELECT * FROM users WHERE id = ?";
+    private static final String SELECT_USERS_BY_FULL_NAME = "SELECT * FROM users WHERE FIRSTNAME = ? AND LASTNAME = ?";
 
     ConnectionFactory connectionFactory;
 
@@ -120,6 +122,51 @@ public class HsqlUserDao implements Dao<User> {
             throw new DatabaseException(e);
         }
     }
+
+    private User mapUser(ResultSet resultSet) throws SQLException {
+        long id = resultSet.getLong(1);
+        String firstName = resultSet.getString(2);
+        String lastName = resultSet.getString(3);
+        Date dateOfBirth = resultSet.getDate(4);
+        User user = new User();
+        user.setId(id);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setDateOfBirth(dateOfBirth);
+        return user;
+    }
+    @Override
+    public Collection<User> find(String firstName, String lastName) {
+        Collection<User> userList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = connectionFactory.createConnection();
+            PreparedStatement statement = connection.prepareStatement(SELECT_USERS_BY_FULL_NAME);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                userList.add(mapUser(resultSet));
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+            return userList;
+        } catch (DatabaseException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return userList;
+    }
+
 
     @Override
     public Collection<User> findAll() throws DatabaseException {
