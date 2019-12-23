@@ -9,6 +9,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
+import ua.nure.kn.kostenko.agent.behaviour.RequestServer;
 import ua.nure.kn.kostenko.agent.behaviour.SearchRequestBehaviour;
 import ua.nure.kn.kostenko.db.DaoFactory;
 import ua.nure.kn.kostenko.db.DatabaseException;
@@ -49,7 +50,7 @@ public class SearchAgent extends Agent {
             }
         });
         addBehaviour(new RequestServer());//added Behaiour
-        DFAgentDescription description = new DFAgentDescription();
+        DFAgentDescription description = new DFAgentDescription();// added Yellow pages  behaviour
         description.setName(getAID());
         ServiceDescription serviceDescription = new ServiceDescription();
         serviceDescription.setName("JADE-Searching");

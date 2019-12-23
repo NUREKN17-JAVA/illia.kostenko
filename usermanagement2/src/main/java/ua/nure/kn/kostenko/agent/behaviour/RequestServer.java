@@ -4,6 +4,8 @@ package ua.nure.kn.kostenko.agent.behaviour;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import ua.nure.kn.kostenko.agent.SearchAgent;
+import ua.nure.kn.kostenko.db.DaoFactory;
+import ua.nure.kn.kostenko.db.DatabaseException;
 import ua.nure.kn.kostenko.domain.User;
 
 import java.util.ArrayList;
